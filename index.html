@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="dist/normalize.css" />
+    <link rel="stylesheet" href="dist/app.css" />
+  </head>
+  <body class="min-h-screen" style="background-color: rgb(244 244 245)">
+    <div class="max-w-3xl mx-auto p-10">
+      <h1 class="text-4xl text-gray-700 pt-32 text-center">
+        Tareas - LocalStorage
+      </h1>
+
+      <div class="bg-white rounded-lg shadow-xl p-10 mt-5">
+        <form id="formulario" class="space-y-3">
+          <div class="flex flex-col space-y-2">
+            <span class="sr-only block">Agregar Tarea</span>
+
+            <input
+              class="block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
+              type="text"
+              name="search"
+              style="padding: 5px"
+              id="textoPendiente"
+            ></input>
+
+            <button
+              style="background-color: darkorange; color: white; padding: 5px"
+            >
+              Guardar
+            </button>
+          </div>
+        </form>
+
+        <h1 class="mt-10 resultado">Resultado</h1>
+        <div id="resultado"></div>
+        <div id="mensaje" style="padding-top: 30px"></div>
+        <!-- SPINNER -->
+        <div id="spinner">
+          <div class="sk-circle1 sk-circle"></div>
+          <div class="sk-circle2 sk-circle"></div>
+          <div class="sk-circle3 sk-circle"></div>
+          <div class="sk-circle4 sk-circle"></div>
+          <div class="sk-circle5 sk-circle"></div>
+          <div class="sk-circle6 sk-circle"></div>
+          <div class="sk-circle7 sk-circle"></div>
+          <div class="sk-circle8 sk-circle"></div>
+          <div class="sk-circle9 sk-circle"></div>
+          <div class="sk-circle10 sk-circle"></div>
+          <div class="sk-circle11 sk-circle"></div>
+          <div class="sk-circle12 sk-circle"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

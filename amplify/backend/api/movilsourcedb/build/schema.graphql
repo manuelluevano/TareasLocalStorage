@@ -1,0 +1,566 @@
+
+type Accesorios {
+  id: ID!
+  name: String!
+  cantidad: Int
+  precioLocal: Int
+  precioFinal: Int
+  imagen: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Servicio {
+  id: ID!
+  fecha: String
+  folio: String
+  numeroGaveta: Int
+  nombreCliente: String
+  numeroTelefono: String
+  servicio: String
+  modelo: String
+  marca: String
+  numeroSerie: String
+  imei: String
+  accesorioEquipo: String
+  observaciones: String
+  gastoLocal: Int
+  abono: Int
+  precioFinal: Int
+  status: Boolean
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Marca {
+  id: ID!
+  marca: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type GavetaPendientes {
+  id: ID!
+  ocupado: Boolean
+  equipoDentro: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type GavetaEntregas {
+  id: ID!
+  ocupado: Boolean
+  equipoDentro: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelAccesoriosConnection {
+  items: [Accesorios]!
+  nextToken: String
+}
+
+input ModelAccesoriosFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  cantidad: ModelIntInput
+  precioLocal: ModelIntInput
+  precioFinal: ModelIntInput
+  imagen: ModelStringInput
+  and: [ModelAccesoriosFilterInput]
+  or: [ModelAccesoriosFilterInput]
+  not: ModelAccesoriosFilterInput
+}
+
+type Query {
+  getAccesorios(id: ID!): Accesorios
+  listAccesorios(filter: ModelAccesoriosFilterInput, limit: Int, nextToken: String): ModelAccesoriosConnection
+  getServicio(id: ID!): Servicio
+  listServicios(filter: ModelServicioFilterInput, limit: Int, nextToken: String): ModelServicioConnection
+  getMarca(id: ID!): Marca
+  listMarcas(filter: ModelMarcaFilterInput, limit: Int, nextToken: String): ModelMarcaConnection
+  getGavetaPendientes(id: ID!): GavetaPendientes
+  listGavetaPendientes(filter: ModelGavetaPendientesFilterInput, limit: Int, nextToken: String): ModelGavetaPendientesConnection
+  getGavetaEntregas(id: ID!): GavetaEntregas
+  listGavetaEntregases(filter: ModelGavetaEntregasFilterInput, limit: Int, nextToken: String): ModelGavetaEntregasConnection
+}
+
+input ModelAccesoriosConditionInput {
+  name: ModelStringInput
+  cantidad: ModelIntInput
+  precioLocal: ModelIntInput
+  precioFinal: ModelIntInput
+  imagen: ModelStringInput
+  and: [ModelAccesoriosConditionInput]
+  or: [ModelAccesoriosConditionInput]
+  not: ModelAccesoriosConditionInput
+}
+
+input CreateAccesoriosInput {
+  id: ID
+  name: String!
+  cantidad: Int
+  precioLocal: Int
+  precioFinal: Int
+  imagen: String
+}
+
+input UpdateAccesoriosInput {
+  id: ID!
+  name: String
+  cantidad: Int
+  precioLocal: Int
+  precioFinal: Int
+  imagen: String
+}
+
+input DeleteAccesoriosInput {
+  id: ID!
+}
+
+type Mutation {
+  createAccesorios(input: CreateAccesoriosInput!, condition: ModelAccesoriosConditionInput): Accesorios
+  updateAccesorios(input: UpdateAccesoriosInput!, condition: ModelAccesoriosConditionInput): Accesorios
+  deleteAccesorios(input: DeleteAccesoriosInput!, condition: ModelAccesoriosConditionInput): Accesorios
+  createServicio(input: CreateServicioInput!, condition: ModelServicioConditionInput): Servicio
+  updateServicio(input: UpdateServicioInput!, condition: ModelServicioConditionInput): Servicio
+  deleteServicio(input: DeleteServicioInput!, condition: ModelServicioConditionInput): Servicio
+  createMarca(input: CreateMarcaInput!, condition: ModelMarcaConditionInput): Marca
+  updateMarca(input: UpdateMarcaInput!, condition: ModelMarcaConditionInput): Marca
+  deleteMarca(input: DeleteMarcaInput!, condition: ModelMarcaConditionInput): Marca
+  createGavetaPendientes(input: CreateGavetaPendientesInput!, condition: ModelGavetaPendientesConditionInput): GavetaPendientes
+  updateGavetaPendientes(input: UpdateGavetaPendientesInput!, condition: ModelGavetaPendientesConditionInput): GavetaPendientes
+  deleteGavetaPendientes(input: DeleteGavetaPendientesInput!, condition: ModelGavetaPendientesConditionInput): GavetaPendientes
+  createGavetaEntregas(input: CreateGavetaEntregasInput!, condition: ModelGavetaEntregasConditionInput): GavetaEntregas
+  updateGavetaEntregas(input: UpdateGavetaEntregasInput!, condition: ModelGavetaEntregasConditionInput): GavetaEntregas
+  deleteGavetaEntregas(input: DeleteGavetaEntregasInput!, condition: ModelGavetaEntregasConditionInput): GavetaEntregas
+}
+
+input ModelSubscriptionAccesoriosFilterInput {
+  id: ModelSubscriptionIDInput
+  name: ModelSubscriptionStringInput
+  cantidad: ModelSubscriptionIntInput
+  precioLocal: ModelSubscriptionIntInput
+  precioFinal: ModelSubscriptionIntInput
+  imagen: ModelSubscriptionStringInput
+  and: [ModelSubscriptionAccesoriosFilterInput]
+  or: [ModelSubscriptionAccesoriosFilterInput]
+}
+
+type Subscription {
+  onCreateAccesorios(filter: ModelSubscriptionAccesoriosFilterInput): Accesorios @aws_subscribe(mutations: ["createAccesorios"])
+  onUpdateAccesorios(filter: ModelSubscriptionAccesoriosFilterInput): Accesorios @aws_subscribe(mutations: ["updateAccesorios"])
+  onDeleteAccesorios(filter: ModelSubscriptionAccesoriosFilterInput): Accesorios @aws_subscribe(mutations: ["deleteAccesorios"])
+  onCreateServicio(filter: ModelSubscriptionServicioFilterInput): Servicio @aws_subscribe(mutations: ["createServicio"])
+  onUpdateServicio(filter: ModelSubscriptionServicioFilterInput): Servicio @aws_subscribe(mutations: ["updateServicio"])
+  onDeleteServicio(filter: ModelSubscriptionServicioFilterInput): Servicio @aws_subscribe(mutations: ["deleteServicio"])
+  onCreateMarca(filter: ModelSubscriptionMarcaFilterInput): Marca @aws_subscribe(mutations: ["createMarca"])
+  onUpdateMarca(filter: ModelSubscriptionMarcaFilterInput): Marca @aws_subscribe(mutations: ["updateMarca"])
+  onDeleteMarca(filter: ModelSubscriptionMarcaFilterInput): Marca @aws_subscribe(mutations: ["deleteMarca"])
+  onCreateGavetaPendientes(filter: ModelSubscriptionGavetaPendientesFilterInput): GavetaPendientes @aws_subscribe(mutations: ["createGavetaPendientes"])
+  onUpdateGavetaPendientes(filter: ModelSubscriptionGavetaPendientesFilterInput): GavetaPendientes @aws_subscribe(mutations: ["updateGavetaPendientes"])
+  onDeleteGavetaPendientes(filter: ModelSubscriptionGavetaPendientesFilterInput): GavetaPendientes @aws_subscribe(mutations: ["deleteGavetaPendientes"])
+  onCreateGavetaEntregas(filter: ModelSubscriptionGavetaEntregasFilterInput): GavetaEntregas @aws_subscribe(mutations: ["createGavetaEntregas"])
+  onUpdateGavetaEntregas(filter: ModelSubscriptionGavetaEntregasFilterInput): GavetaEntregas @aws_subscribe(mutations: ["updateGavetaEntregas"])
+  onDeleteGavetaEntregas(filter: ModelSubscriptionGavetaEntregasFilterInput): GavetaEntregas @aws_subscribe(mutations: ["deleteGavetaEntregas"])
+}
+
+type ModelServicioConnection {
+  items: [Servicio]!
+  nextToken: String
+}
+
+input ModelServicioFilterInput {
+  id: ModelIDInput
+  fecha: ModelStringInput
+  folio: ModelStringInput
+  numeroGaveta: ModelIntInput
+  nombreCliente: ModelStringInput
+  numeroTelefono: ModelStringInput
+  servicio: ModelStringInput
+  modelo: ModelStringInput
+  marca: ModelStringInput
+  numeroSerie: ModelStringInput
+  imei: ModelStringInput
+  accesorioEquipo: ModelStringInput
+  observaciones: ModelStringInput
+  gastoLocal: ModelIntInput
+  abono: ModelIntInput
+  precioFinal: ModelIntInput
+  status: ModelBooleanInput
+  and: [ModelServicioFilterInput]
+  or: [ModelServicioFilterInput]
+  not: ModelServicioFilterInput
+}
+
+input ModelServicioConditionInput {
+  fecha: ModelStringInput
+  folio: ModelStringInput
+  numeroGaveta: ModelIntInput
+  nombreCliente: ModelStringInput
+  numeroTelefono: ModelStringInput
+  servicio: ModelStringInput
+  modelo: ModelStringInput
+  marca: ModelStringInput
+  numeroSerie: ModelStringInput
+  imei: ModelStringInput
+  accesorioEquipo: ModelStringInput
+  observaciones: ModelStringInput
+  gastoLocal: ModelIntInput
+  abono: ModelIntInput
+  precioFinal: ModelIntInput
+  status: ModelBooleanInput
+  and: [ModelServicioConditionInput]
+  or: [ModelServicioConditionInput]
+  not: ModelServicioConditionInput
+}
+
+input CreateServicioInput {
+  id: ID
+  fecha: String
+  folio: String
+  numeroGaveta: Int
+  nombreCliente: String
+  numeroTelefono: String
+  servicio: String
+  modelo: String
+  marca: String
+  numeroSerie: String
+  imei: String
+  accesorioEquipo: String
+  observaciones: String
+  gastoLocal: Int
+  abono: Int
+  precioFinal: Int
+  status: Boolean
+}
+
+input UpdateServicioInput {
+  id: ID!
+  fecha: String
+  folio: String
+  numeroGaveta: Int
+  nombreCliente: String
+  numeroTelefono: String
+  servicio: String
+  modelo: String
+  marca: String
+  numeroSerie: String
+  imei: String
+  accesorioEquipo: String
+  observaciones: String
+  gastoLocal: Int
+  abono: Int
+  precioFinal: Int
+  status: Boolean
+}
+
+input DeleteServicioInput {
+  id: ID!
+}
+
+input ModelSubscriptionServicioFilterInput {
+  id: ModelSubscriptionIDInput
+  fecha: ModelSubscriptionStringInput
+  folio: ModelSubscriptionStringInput
+  numeroGaveta: ModelSubscriptionIntInput
+  nombreCliente: ModelSubscriptionStringInput
+  numeroTelefono: ModelSubscriptionStringInput
+  servicio: ModelSubscriptionStringInput
+  modelo: ModelSubscriptionStringInput
+  marca: ModelSubscriptionStringInput
+  numeroSerie: ModelSubscriptionStringInput
+  imei: ModelSubscriptionStringInput
+  accesorioEquipo: ModelSubscriptionStringInput
+  observaciones: ModelSubscriptionStringInput
+  gastoLocal: ModelSubscriptionIntInput
+  abono: ModelSubscriptionIntInput
+  precioFinal: ModelSubscriptionIntInput
+  status: ModelSubscriptionBooleanInput
+  and: [ModelSubscriptionServicioFilterInput]
+  or: [ModelSubscriptionServicioFilterInput]
+}
+
+type ModelMarcaConnection {
+  items: [Marca]!
+  nextToken: String
+}
+
+input ModelMarcaFilterInput {
+  id: ModelIDInput
+  marca: ModelStringInput
+  and: [ModelMarcaFilterInput]
+  or: [ModelMarcaFilterInput]
+  not: ModelMarcaFilterInput
+}
+
+input ModelMarcaConditionInput {
+  marca: ModelStringInput
+  and: [ModelMarcaConditionInput]
+  or: [ModelMarcaConditionInput]
+  not: ModelMarcaConditionInput
+}
+
+input CreateMarcaInput {
+  id: ID
+  marca: String
+}
+
+input UpdateMarcaInput {
+  id: ID!
+  marca: String
+}
+
+input DeleteMarcaInput {
+  id: ID!
+}
+
+input ModelSubscriptionMarcaFilterInput {
+  id: ModelSubscriptionIDInput
+  marca: ModelSubscriptionStringInput
+  and: [ModelSubscriptionMarcaFilterInput]
+  or: [ModelSubscriptionMarcaFilterInput]
+}
+
+type ModelGavetaPendientesConnection {
+  items: [GavetaPendientes]!
+  nextToken: String
+}
+
+input ModelGavetaPendientesFilterInput {
+  id: ModelIDInput
+  ocupado: ModelBooleanInput
+  equipoDentro: ModelStringInput
+  and: [ModelGavetaPendientesFilterInput]
+  or: [ModelGavetaPendientesFilterInput]
+  not: ModelGavetaPendientesFilterInput
+}
+
+input ModelGavetaPendientesConditionInput {
+  ocupado: ModelBooleanInput
+  equipoDentro: ModelStringInput
+  and: [ModelGavetaPendientesConditionInput]
+  or: [ModelGavetaPendientesConditionInput]
+  not: ModelGavetaPendientesConditionInput
+}
+
+input CreateGavetaPendientesInput {
+  id: ID
+  ocupado: Boolean
+  equipoDentro: String
+}
+
+input UpdateGavetaPendientesInput {
+  id: ID!
+  ocupado: Boolean
+  equipoDentro: String
+}
+
+input DeleteGavetaPendientesInput {
+  id: ID!
+}
+
+input ModelSubscriptionGavetaPendientesFilterInput {
+  id: ModelSubscriptionIDInput
+  ocupado: ModelSubscriptionBooleanInput
+  equipoDentro: ModelSubscriptionStringInput
+  and: [ModelSubscriptionGavetaPendientesFilterInput]
+  or: [ModelSubscriptionGavetaPendientesFilterInput]
+}
+
+type ModelGavetaEntregasConnection {
+  items: [GavetaEntregas]!
+  nextToken: String
+}
+
+input ModelGavetaEntregasFilterInput {
+  id: ModelIDInput
+  ocupado: ModelBooleanInput
+  equipoDentro: ModelStringInput
+  and: [ModelGavetaEntregasFilterInput]
+  or: [ModelGavetaEntregasFilterInput]
+  not: ModelGavetaEntregasFilterInput
+}
+
+input ModelGavetaEntregasConditionInput {
+  ocupado: ModelBooleanInput
+  equipoDentro: ModelStringInput
+  and: [ModelGavetaEntregasConditionInput]
+  or: [ModelGavetaEntregasConditionInput]
+  not: ModelGavetaEntregasConditionInput
+}
+
+input CreateGavetaEntregasInput {
+  id: ID
+  ocupado: Boolean
+  equipoDentro: String
+}
+
+input UpdateGavetaEntregasInput {
+  id: ID!
+  ocupado: Boolean
+  equipoDentro: String
+}
+
+input DeleteGavetaEntregasInput {
+  id: ID!
+}
+
+input ModelSubscriptionGavetaEntregasFilterInput {
+  id: ModelSubscriptionIDInput
+  ocupado: ModelSubscriptionBooleanInput
+  equipoDentro: ModelSubscriptionStringInput
+  and: [ModelSubscriptionGavetaEntregasFilterInput]
+  or: [ModelSubscriptionGavetaEntregasFilterInput]
+}
+

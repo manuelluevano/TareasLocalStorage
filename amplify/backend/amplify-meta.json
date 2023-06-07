@@ -1,0 +1,81 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-movilsourcedb-dev-103906-authRole",
+      "UnauthRoleArn": "arn:aws:iam::202146577832:role/amplify-movilsourcedb-dev-103906-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::202146577832:role/amplify-movilsourcedb-dev-103906-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-movilsourcedb-dev-103906-deployment",
+      "UnauthRoleName": "amplify-movilsourcedb-dev-103906-unauthRole",
+      "StackName": "amplify-movilsourcedb-dev-103906",
+      "StackId": "arn:aws:cloudformation:us-east-2:202146577832:stack/amplify-movilsourcedb-dev-103906/5a0a16e0-f01a-11ed-a3d0-0a1cecbda86b",
+      "AmplifyAppId": "d3d9924ei0qrsv"
+    }
+  },
+  "api": {
+    "movilsourcedb": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
+          }
+        },
+        "GraphQLAPIIdOutput": "qpzsfiao6zdx5osxjc7vj2kfiu",
+        "GraphQLAPIEndpointOutput": "https://c6suid6x6raw3myykussn5g65u.appsync-api.us-east-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-jioqm52xazbs5jxilo664z35hy"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2023-05-15T06:18:12.097Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-movilsourcedb-dev-103906-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apimovilsourcedb"
+      }
+    }
+  },
+  "auth": {
+    "movilsourcedb4c68c8bb": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-east-2_ScVqkmz77",
+        "AppClientIDWeb": "6knomgadc5918e7egfpg6tpnor",
+        "AppClientID": "8ggkkd9l4o4rrj9s1o82467nj",
+        "IdentityPoolId": "us-east-2:520de051-7d24-4327-92f7-f80612d4b19b",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:202146577832:userpool/us-east-2_ScVqkmz77",
+        "IdentityPoolName": "movilsourcedb4c68c8bb_identitypool_4c68c8bb__dev",
+        "UserPoolName": "movilsourcedb4c68c8bb_userpool_4c68c8bb"
+      },
+      "lastPushTimeStamp": "2023-05-15T06:18:12.098Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-movilsourcedb-dev-103906-deployment/amplify-cfn-templates/auth/movilsourcedb4c68c8bb-cloudformation-template.json",
+        "logicalId": "authmovilsourcedb4c68c8bb"
+      }
+    }
+  }
+}
